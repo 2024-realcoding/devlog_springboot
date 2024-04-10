@@ -27,6 +27,8 @@ dependencies {
     // db
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("com.h2database:h2")
+
+    testImplementation ("org.springframework.restdocs:spring-restdocs-mockmvc")
 }
 
 tasks.withType<Test> {
