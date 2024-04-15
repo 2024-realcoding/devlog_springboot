@@ -1,8 +1,10 @@
 package com.com.cnu.devlog_springboot.service;
 
+import com.com.cnu.devlog_springboot.exception.DevlogException;
 import com.com.cnu.devlog_springboot.model.Post;
 import com.com.cnu.devlog_springboot.model.request.PostRequest;
 import com.com.cnu.devlog_springboot.repository.PostRepository;
+import com.com.cnu.devlog_springboot.type.ErrorCode;
 import com.com.cnu.devlog_springboot.type.Tag;
 import jakarta.annotation.Nullable;
 import lombok.RequiredArgsConstructor;
@@ -43,7 +45,7 @@ public class PostService {
 
     public Post getPost(Integer postId) {
         return postRepository.findById(postId)
-                .orElse(null);
+                .orElseThrow(() -> new DevlogException(ErrorCode.POST_NOT_FOUND));
     }
 
     public void deletePost(Integer postId) {
