@@ -50,7 +50,7 @@ jobs:
           username: kim87070396
           source: "devlog_springboot-0.0.1-SNAPSHOT.jar"
           target: "/home/kim87070396"
-          key: ${ secrets.PRIVATE_KEY }
+          key: ${PRIVATE_KEY}
   
   run-app:
     needs: send-jar
@@ -65,12 +65,12 @@ jobs:
           username: kim87070396
           source: "deploy.sh"
           target: "/home/kim87070396"
-          key: ${ secrets.PRIVATE_KEY }
+          key: ${PRIVATE_KEY}
       - name: Execute script
         uses: appleboy/ssh-action@master
         with:
           username: kim87070396
           host: 34.22.91.27
-          key: ${ secrets.PRIVATE_KEY }
+          key: ${PRIVATE_KEY}
           script_stop: true
           script: cd /home/kim87070396 && chmod +x deploy.sh && ./deploy.sh
