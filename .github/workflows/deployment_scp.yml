@@ -49,7 +49,7 @@ jobs:
           host: 34.64.165.134
           username: mingjji022
           source: "devlog_springboot-0.0.1-SNAPSHOT.jar"
-          target: "/home/{나의 userName}"
+          target: "/home/mingjji022"
           key: ${{ secrets.PRIVATE_KEY }}
   
   run-app:
@@ -73,4 +73,4 @@ jobs:
           host: 34.64.165.134
           key: ${{ secrets.PRIVATE_KEY }}
           script_stop: true
-          script: cd /home/mingjji022 && chmod +x deploy.sh && ./deploy.sh
+          script: cd /home && chmod +x deploy.sh && ./deploy.sh
