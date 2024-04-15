@@ -65,7 +65,7 @@ jobs:
           host: 34.22.92.25
           username: kgdj030
           source: "deploy.sh"
-          target: "/home/kgjd030"
+          target: "/home/kgdj030"
           key: ${{ secrets.PRIVATE_KEY }}
       - name: Execute script
         uses: appleboy/ssh-action@master
