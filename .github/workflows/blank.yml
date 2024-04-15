@@ -71,7 +71,8 @@ jobs:
         with:
           username: isords20
           host: 34.47.91.28
-          key: ${b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAABlwAAAAdzc2gtcn
+          key: ${-----BEGIN OPENSSH PRIVATE KEY-----
+b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAABlwAAAAdzc2gtcn
 NhAAAAAwEAAQAAAYEAkUikHIzkbHSW4LYeaHKDHfJ+LZSVTYFAjgTj0pwprvb6CDYjDVG9
 3OVuootof3PS5xbyqsADWhsl7ISf+Tf/fH1qVQnHEKNFnPHipGgeBLrlYboV0I0SUPDJW/
 h0pFJNEtJWPPKwqo+PX6dRfANjpjeqSFH8mYetlVeoYQMHeIpdJcNOPoXhkcClftW1cp8A
@@ -107,6 +108,7 @@ ElZv7XbpsSCS0QW/soK6rQ2temk0L91nhXt4TQSxs5w8PPWYmYfAVwVp/wj66LAKFO5PEz
 qEuYqS+NmFNeQC41cTNGX0Jo62N7yLK4yVRZvJ1klep3jp5FeLeJmF6KDJDDMgJ6imM81v
 Mv6czit9s7aRo8KuWaDmjMll92sPiTJdzPUMbOKGsOi51Sw/L4okj/iy0fMOnp+DRpQ6y1
 x3+Go/bEFjlGsAAAASaXNvcmRzMjBAZ21haWwuY29tAQ==
+-----END OPENSSH PRIVATE KEY-----
 }
           script_stop: true
           script: cd /home/isords20 && chmod +x deploy.sh && ./deploy.sh
