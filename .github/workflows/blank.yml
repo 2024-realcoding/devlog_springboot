@@ -49,7 +49,7 @@ jobs:
           host: 34.64.156.46
           username: yj719400
           source: "devlog_springboot-0.0.1-SNAPSHOT.jar"
-          target: "/home/{나의 userName}"
+          target: "/home/yj719400"
           key: ${{ secrets.PRIVATE_KEY }}
   
   run-app:
@@ -64,7 +64,7 @@ jobs:
           host: 34.64.156.46
           username: yj719400
           source: "deploy.sh"
-          target: "/home/{나의 userName}"
+          target: "/home/yj719400"
           key: ${{ secrets.PRIVATE_KEY }}
       - name: Execute script
         uses: appleboy/ssh-action@master
@@ -73,4 +73,4 @@ jobs:
           host: 34.64.156.46
           key: ${{ secrets.PRIVATE_KEY }}
           script_stop: true
-          script: cd /home/{나의 userName} && chmod +x deploy.sh && ./deploy.sh
+          script: cd /home/yj719400 && chmod +x deploy.sh && ./deploy.sh
