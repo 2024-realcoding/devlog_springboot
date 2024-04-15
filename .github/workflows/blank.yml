@@ -24,7 +24,7 @@ jobs:
     - name: Set up JDK 17
       uses: actions/setup-java@v3
       with:
-        java-version: '17'
+        java-version: '21'
         distribution: 'temurin'
     - name: Build with Gradle
       uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
@@ -64,7 +64,7 @@ jobs:
           host: 34.22.109.116
           username: dlxor2306
           source: "deploy.sh"
-          target: "/home/{나의 userName}"
+          target: "/home/dlxor2306"
           key: ${{ secrets.PRIVATE_KEY }}
       - name: Execute script
         uses: appleboy/ssh-action@master
