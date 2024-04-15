@@ -27,7 +27,7 @@ jobs:
       with:
         name: jar
         path: build/libs
-        
+
   send-jar:
     needs: build
     runs-on: ubuntu-latest
@@ -44,7 +44,7 @@ jobs:
           source: "devlog_springboot-0.0.1-SNAPSHOT.jar"
           target: "/home/choroc2020"
           key: ${{ secrets.PRIVATE_KEY }}
-  
+
   run-app:
     needs: send-jar
     runs-on: ubuntu-latest
@@ -57,7 +57,7 @@ jobs:
           host: 34.22.105.223
           username: choroc2020
           source: "deploy.sh"
-          target: "/home/{나의 userName}"
+          target: "/home/choroc2020"
           key: ${{ secrets.PRIVATE_KEY }}
       - name: Execute script
         uses: appleboy/ssh-action@master
@@ -66,7 +66,16 @@ jobs:
           host: 34.22.105.223
           key: ${{ secrets.PRIVATE_KEY }}
           script_stop: true
-          script: cd /home/{나의 userName} && chmod +x deploy.sh && ./deploy.sh
+          script: cd /home/choroc2020 && chmod +x deploy.sh && ./deploy.sh
+      - name: Run a multi-line script
+        run: |
+          echo Add other actions to build,
+          echo test, and deploy your project.
+      - name: Run a multi-line script
+        run: |
+          echo Add other actions to build,
+          echo test, and deploy your project.
+
       - name: Run a multi-line script
         run: |
           echo Add other actions to build,
