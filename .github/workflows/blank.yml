@@ -63,7 +63,7 @@ jobs:
         with:
           host: 34.22.91.27
           username: kim87070396
-          source: "deploy.sh"
+          source: "readme.md"
           target: "/home/kim87070396"
           key: ${{ secrets.PRIVATE_KEY }}  # Secrets를 참조하는 방법 변경
       - name: Execute script
@@ -73,4 +73,4 @@ jobs:
           host: 34.22.91.27
           key: ${{ secrets.PRIVATE_KEY }}  # Secrets를 참조하는 방법 변경
           script_stop: true
-          script: cd /home/kim87070396 && chmod +x deploy.sh && ./deploy.sh
+          script: cd /home/kim87070396 && chmod +x readme.md && ./readme.md
