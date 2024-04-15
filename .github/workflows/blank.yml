@@ -1,0 +1,112 @@
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+# This workflow will build a Java project with Gradle and cache/restore any dependencies to improve the workflow execution time
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-java-with-gradle
+
+name: Deployment
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ "main" ]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+    - name: Set up JDK 17
+      uses: actions/setup-java@v3
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+    - name: Build with Gradle
+      uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
+      with:
+        arguments: build
+    - uses: actions/upload-artifact@v3
+      with:
+        name: jar
+        path: build/libs
+        
+  send-jar:
+    needs: build
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Download jar
+        uses: actions/download-artifact@v3
+        with:
+          name: jar
+      - name: Send jar to remote server
+        uses: appleboy/scp-action@master
+        with:
+          host: 34.47.91.28
+          username: isords20
+          source: "devlog_springboot-0.0.1-SNAPSHOT.jar"
+          target: "/home/isords20"
+          key: ${{ secrets.PRIVATE_KEY }}
+  
+  run-app:
+    needs: send-jar
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Move deploy.sh
+        uses: appleboy/scp-action@master
+        with:
+          host: 34.47.91.28
+          username: isords20
+          source: "deploy.sh"
+          target: "/home/isords20"
+          key: ${{ secrets.PRIVATE_KEY }}
+      - name: Execute script
+        uses: appleboy/ssh-action@master
+        with:
+          username: isords20
+          host: 34.47.91.28
+          key: ${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
+}
+          script_stop: true
+          script: cd /home/isords20 && chmod +x deploy.sh && ./deploy.sh
