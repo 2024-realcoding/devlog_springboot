@@ -46,8 +46,8 @@ jobs:
       - name: Send jar to remote server
         uses: appleboy/scp-action@master
         with:
-          host: {34.64.188.42}
-          username: {kongju8466}
+          host: 34.64.188.42
+          username: kongju8466
           source: "devlog_springboot-0.0.1-SNAPSHOT.jar"
           target: "/home/{kongju8466}"
           key: ${{ secrets.PRIVATE_KEY }}
@@ -61,16 +61,16 @@ jobs:
       - name: Move deploy.sh
         uses: appleboy/scp-action@master
         with:
-          host: {34.64.188.42}
-          username: {kongju8466}
+          host: 34.64.188.42
+          username: kongju8466
           source: "deploy.sh"
           target: "/home/{kongju8466}"
           key: ${{ secrets.PRIVATE_KEY }}
       - name: Execute script
         uses: appleboy/ssh-action@master
         with:
-          username: {kongju8466}
-          host: {34.64.188.42}
+          username: kongju8466
+          host: 34.64.188.42
           key: ${{ secrets.PRIVATE_KEY }}
           script_stop: true
           script: cd /home/{kongju8466} && chmod +x deploy.sh && ./deploy.sh
