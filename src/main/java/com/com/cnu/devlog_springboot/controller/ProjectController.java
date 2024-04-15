@@ -40,7 +40,7 @@ public class ProjectController {
         return ResponseEntity.ok(project);
     }
 
-    @PutMapping("{projectId}")
+    @PutMapping("/{projectId}")
     public ResponseEntity<Project> updateProject(
             @PathVariable("projectId") final Integer projectId,
             @RequestBody final ProjectRequest request
@@ -49,7 +49,7 @@ public class ProjectController {
         return ResponseEntity.ok(project);
     }
 
-    @DeleteMapping("{projectId}")
+    @DeleteMapping("/{projectId}")
     public ResponseEntity<Void> deleteProject(@PathVariable("projectId") final Integer projectId) {
         projectService.deleteProject(projectId);
         return ResponseEntity.noContent().build();
