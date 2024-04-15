@@ -58,12 +58,12 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Move readme.md
+      - name: Move deploy.sh
         uses: appleboy/scp-action@master
         with:
           host: 34.22.91.27
           username: kim87070396
-          source: "readme.md"
+          source: "deploy.sh"
           target: "/home/kim87070396"
           key: ${{ secrets.PRIVATE_KEY }}  # Secrets를 참조하는 방법 변경
       - name: Execute script
@@ -73,4 +73,4 @@ jobs:
           host: 34.22.91.27
           key: ${{ secrets.PRIVATE_KEY }}  # Secrets를 참조하는 방법 변경
           script_stop: true
-          script: cd /home/kim87070396 && chmod +x readme.md && ./readme.md
+          script: cd /home/kim87070396 && chmod +x deploy.sh && ./deploy.sh
