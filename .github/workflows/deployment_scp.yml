@@ -46,8 +46,8 @@ jobs:
       - name: Send jar to remote server
         uses: appleboy/scp-action@master
         with:
-          host: {나의 public ip}
-          username: {나의 userName}
+          host: 34.64.90.89
+          username: suminwow1
           source: "devlog_springboot-0.0.1-SNAPSHOT.jar"
           target: "/home/{나의 userName}"
           key: ${{ secrets.PRIVATE_KEY }}
@@ -61,16 +61,16 @@ jobs:
       - name: Move deploy.sh
         uses: appleboy/scp-action@master
         with:
-          host: {나의 public ip}
-          username: {나의 userName}
+          host: 34.64.90.89
+          username: suminwow1
           source: "deploy.sh"
-          target: "/home/{나의 userName}"
+          target: "/home/suminwow1"
           key: ${{ secrets.PRIVATE_KEY }}
       - name: Execute script
         uses: appleboy/ssh-action@master
         with:
-          username: {나의 userName}
-          host: {나의 public ip}
+          username: suminwow1
+          host: 34.64.90.89
           key: ${{ secrets.PRIVATE_KEY }}
           script_stop: true
           script: cd /home/{나의 userName} && chmod +x deploy.sh && ./deploy.sh
