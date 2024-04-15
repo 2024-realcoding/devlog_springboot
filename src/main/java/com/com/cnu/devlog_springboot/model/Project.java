@@ -8,7 +8,7 @@ import lombok.*;
 
 @Getter
 @Setter
-@Entity(name = "posts")
+@Entity(name = "projects")
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
 public class Project {

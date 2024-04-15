@@ -1,9 +1,7 @@
 package com.com.cnu.devlog_springboot.service;
 
 import com.com.cnu.devlog_springboot.exception.DevlogException;
-import com.com.cnu.devlog_springboot.model.Post;
 import com.com.cnu.devlog_springboot.model.Project;
-import com.com.cnu.devlog_springboot.model.request.PostRequest;
 import com.com.cnu.devlog_springboot.model.request.ProjectRequest;
 import com.com.cnu.devlog_springboot.repository.ProjectRepository;
 import com.com.cnu.devlog_springboot.type.ErrorCode;
@@ -41,12 +39,12 @@ public class ProjectService {
                     post.setSummary(projectRequest.summary());
                     return projectRepository.save(post);
                 })
-                .orElse(null);
+                .orElseThrow(()-> new DevlogException(ErrorCode.PROJECT_NOT_FOUND));
     }
 
     public Project getProject(Integer projectId) {
         return projectRepository.findById(projectId)
-                .orElseThrow(() -> new DevlogException(ErrorCode.POST_NOT_FOUND));
+                .orElseThrow(() -> new DevlogException(ErrorCode.PROJECT_NOT_FOUND));
     }
 
     public void deleteProject(Integer projectId) {
