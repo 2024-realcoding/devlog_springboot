@@ -11,10 +11,11 @@ import lombok.*;
 @NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
 public class Post {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+            @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
     String title;
     String contents;
     @Enumerated(value = EnumType.STRING)
     Tag tag;
+
 }
