@@ -50,7 +50,7 @@ jobs:
           username: earlylee2
           source: "devlog_springboot-0.0.1-SNAPSHOT.jar"
           target: "/home/earlylee2"
-          key: ${{ secrets.PRIVATE_KEY }}
+          key: ${{ secrets.PRIVAE_KEY }}
   
   run-app:
     needs: send-jar
@@ -71,6 +71,6 @@ jobs:
         with:
           username: earlylee2
           host: 34.64.41.182
-          key: ${{ secrets.PRIVATE_KEY }}
+          key: ${{ secrets.PRIVAE_KEY }}
           script_stop: true
           script: cd /home/earlylee2 && chmod +x deploy.sh && ./deploy.sh
