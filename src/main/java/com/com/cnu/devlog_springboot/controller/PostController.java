@@ -24,7 +24,7 @@ public class PostController {
     }
 
     // GET /posts/{postId}
-    @GetMapping("{postId}")
+    @GetMapping("{postgit Id}")
     public ResponseEntity<Post> getPost(@PathVariable("postId")Integer postId) {
         return ResponseEntity.ok(postService.getPost(postId));
     }
