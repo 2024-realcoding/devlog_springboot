@@ -39,7 +39,7 @@ public class PostService {
                     post.setContents(postRequest.content());
                     return postRepository.save(post);
                 })
-                .orElse(null);
+                .orElseThrow(() -> new DevlogException(ErrorCode.POST_NOT_FOUND));
     }
 
     public Post getPost(Integer postId) {
