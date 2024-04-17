@@ -43,7 +43,7 @@ public class ProjectService {
                     project.setEndDate(projectRequest.endDate());
                     return projectRepository.save(project);
                 })
-                .orElse(null);
+                .orElseThrow(() -> new DevlogException(ErrorCode.PROJECT_NOT_FOUND));
     }
 
     public Project getProject(Integer projectId) {
@@ -52,7 +52,8 @@ public class ProjectService {
     }
 
     public void deleteProject(Integer projectId) {
-        projectRepository.findById(projectId)
-                .ifPresent(projectRepository::delete);
+        Project project = projectRepository.findById(projectId)
+                .orElseThrow(() -> new DevlogException(ErrorCode.PROJECT_NOT_FOUND));
+        projectRepository.delete(project);
     }
 }
