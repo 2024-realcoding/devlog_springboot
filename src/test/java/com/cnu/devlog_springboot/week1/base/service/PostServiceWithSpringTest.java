@@ -17,7 +17,7 @@ public class PostServiceWithSpringTest {
     @Autowired
     PostService postService;
 
-    @DisplayName("테스트 코드에서 Spring Component 실행해보기")
+    @DisplayName("[Success] 테스트 코드에서 Spring Component 실행해보기")
     @Test
     void testDoCodeRun() {
         Post post = postService.createPost(PostFixture.getNormalPostRequest());
