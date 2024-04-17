@@ -29,27 +29,16 @@ public class ProjectController {
 
     @GetMapping("{projectId}")
     public ResponseEntity<Project> getProject(@PathVariable("projectId") Integer projectId) {
-        if (projectRepository.findById(projectId).isEmpty()) {
-            return ResponseEntity.notFound().build();
-        }
         return ResponseEntity.ok(projectService.getProject(projectId));
     }
 
     @PutMapping("{projectId}")
     public ResponseEntity<Project> updateProject(@PathVariable Integer projectId, @RequestBody ProjectRequest projectRequest) {
-        if (projectRepository.findById(projectId).isEmpty()) {
-            return ResponseEntity.notFound().build();
-        }
-
         return ResponseEntity.ok(projectService.updateProject(projectId, projectRequest));
     }
 
     @DeleteMapping("{projectId}")
     public ResponseEntity<Project> deleteProject(@PathVariable Integer projectId) {
-        if (projectRepository.findById(projectId).isEmpty()) {
-            return ResponseEntity.notFound().build();
-        }
-
         return ResponseEntity.noContent().build();
     }
 

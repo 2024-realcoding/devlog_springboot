@@ -1,8 +1,10 @@
 package com.com.cnu.devlog_springboot.service;
 
+import com.com.cnu.devlog_springboot.exception.DevlogException;
 import com.com.cnu.devlog_springboot.model.Project;
 import com.com.cnu.devlog_springboot.model.request.ProjectRequest;
 import com.com.cnu.devlog_springboot.repository.ProjectRepository;
+import com.com.cnu.devlog_springboot.type.ErrorCode;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -31,7 +33,7 @@ public class ProjectService {
 
     public Project getProject(Integer projectId) {
         return projectRepository.findById(projectId)
-                .orElse(null);
+                .orElseThrow(() -> new DevlogException(ErrorCode.PROJECT_NOT_FOUND));
     }
 
     public Project updateProject(Integer projectId, ProjectRequest projectRequest) {
@@ -44,11 +46,12 @@ public class ProjectService {
                     project.setEndDate(projectRequest.endDate());
                     return projectRepository.save(project);
                 })
-                .orElse(null);
+                .orElseThrow(() -> new DevlogException(ErrorCode.PROJECT_NOT_FOUND));
     }
 
     public void deleteProject(Integer projectId) {
         projectRepository.findById(projectId)
                 .ifPresent(projectRepository::delete);
+
     }
 }
