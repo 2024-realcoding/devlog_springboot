@@ -3,6 +3,7 @@ package com.cnu.devlog_springboot.week1.base.service;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import com.cnu.devlog_springboot.model.Post;
+import com.cnu.devlog_springboot.model.request.PostRequest;
 import com.cnu.devlog_springboot.service.PostService;
 import com.cnu.devlog_springboot.week1.practice.service.fixture.PostFixture;
 import org.junit.jupiter.api.DisplayName;
@@ -20,7 +21,8 @@ public class PostServiceWithSpringTest {
     @DisplayName("Spring 테스트 코드로 Spring Component 실행해보기")
     @Test
     void testDoCodeRun() {
-        Post post = postService.createPost(PostFixture.getNormalPostRequest());
+        PostRequest normalPostRequest = PostFixture.getNormalPostRequest();
+        Post post = postService.createPost(normalPostRequest);
         assertThat(post).isNotNull();
     }
 }
