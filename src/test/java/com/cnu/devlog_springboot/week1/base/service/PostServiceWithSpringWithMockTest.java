@@ -37,16 +37,18 @@ public class PostServiceWithSpringWithMockTest {
         String title = "만나서";
         String contents = "반가워요";
         Tag tag = Tag.SPRINGBOOT;
-
+        int testId = 1;
         Post testPostData = Post.builder()
+                .id(testId)
                 .title(title)
                 .contents(contents)
                 .tag(tag)
                 .build();
-        when(postRepository.findById(1)).thenReturn(Optional.of(testPostData)); // when 때 실행 시 줄 데이터 세팅
+        when(postRepository.findById(testId)).thenReturn(Optional.of(testPostData)); // when 때 실행 시 줄 데이터 세팅
+//        when(postService.getPost(1)).thenReturn(testPostData); // when 때 실행 시 줄 데이터 세팅
 
         // when : 로직을 수행
-        Post post = postService.getPost(1);
+        Post post = postService.getPost(testId);
         // then : 생각한 대로 결과가 나오는지 확인
         assertThat(post).isNotNull();
     }
