@@ -1,6 +1,7 @@
 package com.cnu.devlog_springboot.week1.base.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.when;
 
 import java.util.Optional;
@@ -45,8 +46,7 @@ public class PostServiceWithSpringWithMockTest {
                 .contents(contents)
                 .tag(tag)
                 .build();
-        when(postRepository.findById(testId)).thenReturn(Optional.of(testPostData)); // when 때 실행 시 줄 데이터 세팅
-//        when(postService.getPost(1)).thenReturn(testPostData); // when 때 실행 시 줄 데이터 세팅
+        given(postRepository.findById(testId)).willReturn(Optional.of(testPostData));
 
         // when : 로직을 수행
         Post post = postService.getPost(testId);
