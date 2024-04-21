@@ -7,10 +7,12 @@ import com.cnu.devlog_springboot.repository.PostRepository;
 import com.cnu.devlog_springboot.service.valid.PostValidService;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class PostService {
@@ -47,6 +49,7 @@ public class PostService {
     }
 
     public Post getPost(Integer postId) {
+        log.info("getPost {}", postId);
         return postRepository.findById(postId)
                 .orElse(null);
     }
