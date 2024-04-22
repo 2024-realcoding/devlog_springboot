@@ -13,7 +13,7 @@ public enum ErrorCode {
 
     PROJECT_NOT_FOUND(
             HttpStatus.NOT_FOUND,
-            4001,
+            404,
             "해당 프로젝트를 찾을 수 없습니다.")
     ;
 
