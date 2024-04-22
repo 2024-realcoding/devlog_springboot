@@ -1,5 +1,5 @@
 package com.com.cnu.devlog_springboot.model.request;
-
+import com.com.cnu.devlog_springboot.type.Tag;
 import java.time.LocalDate;
 
 public record ProjectRequest(
@@ -7,6 +7,7 @@ public record ProjectRequest(
         String summary,
         String contents,
         LocalDate startDate,
-        LocalDate endDate
+        LocalDate endDate,
+        Tag tag
 ) {
 }

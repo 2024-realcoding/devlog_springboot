@@ -1,9 +1,7 @@
 package com.com.cnu.devlog_springboot.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.com.cnu.devlog_springboot.type.Tag;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
@@ -22,4 +20,6 @@ public class Project {
     String contents;
     LocalDate startDate;
     LocalDate endDate;
+    @Enumerated(value = EnumType.STRING)
+    Tag tag;
 }
