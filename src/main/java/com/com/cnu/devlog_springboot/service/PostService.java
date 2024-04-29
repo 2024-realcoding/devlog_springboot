@@ -16,19 +16,20 @@ import java.util.List;
 @RequiredArgsConstructor
 public class PostService {
     private final PostRepository postRepository;
+
     public List<Post> getPosts(@Nullable Tag tag) {
         if (tag != null) {
             return postRepository.findAllByTag(tag);
         }
         return postRepository.findAll();
     }
+
     public Post createPost(PostRequest postRequest) {
         return postRepository.save(new Post(
                 null,
                 postRequest.title(),
                 postRequest.content(),
-                postRequest.tag()
-        ));
+                postRequest.tag()));
     }
 
     public Post updatePost(Integer postId, PostRequest postRequest) {

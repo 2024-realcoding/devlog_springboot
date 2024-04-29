@@ -39,16 +39,14 @@ public class PostController {
     @PutMapping("{postId}")
     public ResponseEntity<Post> updatePost(
             @PathVariable("postId") Integer postId,
-            @RequestBody PostRequest postRequest
-    ) {
+            @RequestBody PostRequest postRequest) {
         return ResponseEntity.ok(postService.updatePost(postId, postRequest));
     }
 
     // DELETE /posts/{postId}
     @DeleteMapping("{postId}")
     public ResponseEntity<Post> deletePost(
-            @PathVariable("postId") Integer postId
-    ) {
+            @PathVariable("postId") Integer postId) {
         postService.deletePost(postId);
         return ResponseEntity.noContent().build();
     }
