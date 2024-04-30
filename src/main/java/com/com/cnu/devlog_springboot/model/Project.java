@@ -1,5 +1,6 @@
 package com.com.cnu.devlog_springboot.model;
 
+import com.com.cnu.devlog_springboot.model.request.ProjectRequest;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
