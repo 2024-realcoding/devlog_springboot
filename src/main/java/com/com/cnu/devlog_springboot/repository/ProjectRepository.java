@@ -6,8 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ProjectRepository extends JpaRepository<Project, Integer> {
-//    Post save(Post post);
-//    List<Post> findAll();
-//    Optional<Post> findById(Integer postId);
-//    void delete(Post post);
+
 }

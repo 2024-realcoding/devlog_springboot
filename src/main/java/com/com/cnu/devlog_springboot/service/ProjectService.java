@@ -41,18 +41,18 @@ public class ProjectService {
                     project.setEndDate(projectRequest.endDate());
                     return projectRepository.save(project);
                 })
-                .orElseThrow(() -> new DevlogException(ErrorCode.POST_NOT_FOUND));
+                .orElseThrow(() -> new DevlogException(ErrorCode.PROJECT_NOT_FOUND));
     }
 
     public Project getProject(Integer projectId) {
         return projectRepository.findById(projectId)
-                .orElseThrow(() -> new DevlogException(ErrorCode.POST_NOT_FOUND));
+                .orElseThrow(() -> new DevlogException(ErrorCode.PROJECT_NOT_FOUND));
     }
 
     public void deleteProject(Integer projectId) {
         projectRepository.findById(projectId)
                 .ifPresentOrElse(projectRepository::delete,
-                        () -> { throw new DevlogException(ErrorCode.POST_NOT_FOUND); });
+                        () -> { throw new DevlogException(ErrorCode.PROJECT_NOT_FOUND); });
 
     }
 }
