@@ -3,7 +3,10 @@ package com.com.cnu.devlog_springboot.controller;
 import com.com.cnu.devlog_springboot.model.Post;
 import com.com.cnu.devlog_springboot.model.request.PostRequest;
 import com.com.cnu.devlog_springboot.service.PostService;
+import com.com.cnu.devlog_springboot.type.Tag;
+import jakarta.annotation.Nullable;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,12 +16,14 @@ import java.util.List;
 @RequestMapping("/posts")
 @RequiredArgsConstructor
 public class PostController {
-    private final PostService postService;
+    @Autowired
+    PostService postService;
 
-    // GET /posts
+
+    // GET /posts?tag=JAVA
     @GetMapping
-    public ResponseEntity<List<Post>> getPosts() {
-        return ResponseEntity.ok(postService.getPosts());
+    public ResponseEntity<List<Post>> getPosts(@RequestParam("tag") @Nullable Tag tag) {
+        return ResponseEntity.ok(postService.getPosts(tag));
     }
 
     // GET /posts/{postId}
