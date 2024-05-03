@@ -23,20 +23,21 @@ public class ProjectController {
 
     // GET /projects/{projectId}
     @GetMapping("{projectId}")
-    public ResponseEntity<Project> getProject(@PathVariable("projectId") Integer projectId) {
+    public ResponseEntity<Project> getProject(@PathVariable("projectId")Integer projectId) {
         return ResponseEntity.ok(projectService.getProject(projectId));
     }
 
     // POST /projects
     @PostMapping
     public ResponseEntity<Project> createProject(@RequestBody ProjectRequest projectRequest) {
-        return ResponseEntity.ok(projectService.createProject(projectRequest));
+        return ResponseEntity.ok(projectService.creatProject(projectRequest));
     }
 
     // PUT /projects/{projectId}
+    // ex. localhost:8080/projects/3
     @PutMapping("{projectId}")
     public ResponseEntity<Project> updateProject(
-            @PathVariable("projectId") Integer projectId,
+            @PathVariable("projectId")Integer projectId,
             @RequestBody ProjectRequest projectRequest
     ) {
         return ResponseEntity.ok(projectService.updateProject(projectId, projectRequest));
