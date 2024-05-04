@@ -1,4 +1,5 @@
 package com.com.cnu.devlog_springboot.exception;
+
 import com.com.cnu.devlog_springboot.type.ErrorCode;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
