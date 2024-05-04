@@ -23,4 +23,7 @@ public class Project {
     LocalDate startDate;
     LocalDate endDate;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> f30bc02f460a0bdc2e95444c8475bfd8f8a62fc6

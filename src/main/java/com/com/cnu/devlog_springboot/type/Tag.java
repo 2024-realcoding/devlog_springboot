@@ -7,3 +7,4 @@ public enum Tag {
     OS,
     NETWORK
 }
+

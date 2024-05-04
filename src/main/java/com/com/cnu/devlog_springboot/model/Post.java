@@ -18,3 +18,4 @@ public class Post {
     @Enumerated(value = EnumType.STRING)
     Tag tag;
 }
+
