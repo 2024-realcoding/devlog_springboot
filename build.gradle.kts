@@ -19,6 +19,14 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.0.2")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
+
+    // lombok
+    compileOnly("org.projectlombok:lombok")
+    annotationProcessor("org.projectlombok:lombok") //TODO: annotation build 활성화 언급하기
+
+    // db
+    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+    implementation("com.h2database:h2")
 }
 
 tasks.withType<Test> {
