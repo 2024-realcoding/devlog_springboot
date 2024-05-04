@@ -1,5 +1,6 @@
 package com.com.cnu.devlog_springboot.model;
 
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -13,6 +14,8 @@ import java.time.LocalDate;
 @Entity(name = "projects")
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED, force = true)
+
+
 public class Project {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
