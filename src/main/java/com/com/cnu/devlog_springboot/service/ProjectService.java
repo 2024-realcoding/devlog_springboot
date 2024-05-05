@@ -22,6 +22,7 @@ public class ProjectService {
     private final ProjectRepository projectRepository;
 
     public List<Project> getProjects(){
+
         return projectRepository.findAll();
     }
 
