@@ -4,6 +4,8 @@ import com.com.cnu.devlog_springboot.type.Tag;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.lang.reflect.GenericArrayType;
+
 @Getter
 @Setter
 @Entity(name = "posts")
@@ -17,4 +19,5 @@ public class Post {
     String contents;
     @Enumerated(value = EnumType.STRING)
     Tag tag;
+
 }
