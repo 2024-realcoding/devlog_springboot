@@ -4,9 +4,10 @@ import com.com.cnu.devlog_springboot.model.Post;
 import com.com.cnu.devlog_springboot.model.request.PostRequest;
 import com.com.cnu.devlog_springboot.service.PostService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.lang.Nullable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
+import com.com.cnu.devlog_springboot.type.Tag;
 import java.util.List;
 
 @RestController
