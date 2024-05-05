@@ -10,4 +10,8 @@ fi
 
 sleep 1s
 
+<<<<<<< HEAD
 nohup java -jar $APPLICATION >> spring.out 2>&1 & echo $! > application.pid
+=======
+nohup java -jar $APPLICATION >> spring.out 2>&1 & echo $! > application.pid
+>>>>>>> origin

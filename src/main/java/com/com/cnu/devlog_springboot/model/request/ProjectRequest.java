@@ -9,4 +9,8 @@ public record ProjectRequest(
         LocalDate startDate,
         LocalDate endDate
 ) {
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> origin
