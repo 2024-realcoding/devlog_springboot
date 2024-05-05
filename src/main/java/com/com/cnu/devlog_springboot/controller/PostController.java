@@ -36,6 +36,7 @@ public class PostController {
     }
 
     // PUT /posts/{postId}
+    // ex. localhost:8080/posts/3
     @PutMapping("{postId}")
     public ResponseEntity<Post> updatePost(
             @PathVariable("postId")Integer postId,
