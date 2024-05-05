@@ -22,4 +22,8 @@ public class Project {
     String contents;
     LocalDate startDate;
     LocalDate endDate;
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> origin
