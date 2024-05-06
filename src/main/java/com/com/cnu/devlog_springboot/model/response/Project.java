@@ -1,4 +1,4 @@
-package com.com.cnu.devlog_springboot.model;
+package com.com.cnu.devlog_springboot.model.response;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
