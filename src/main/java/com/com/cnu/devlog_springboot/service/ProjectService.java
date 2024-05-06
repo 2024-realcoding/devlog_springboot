@@ -52,7 +52,5 @@ public class ProjectService {
         projectRepository.findById(projectId)
                 .ifPresentOrElse(projectRepository::delete,
                         () -> {throw new DevlogException(ErrorCode.POST_NOT_FOUND);});
-
-
     }
 }
