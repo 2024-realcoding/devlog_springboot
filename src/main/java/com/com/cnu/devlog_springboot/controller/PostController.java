@@ -1,53 +1,54 @@
 package com.com.cnu.devlog_springboot.controller;
 
-import com.com.cnu.devlog_springboot.model.Project;
-import com.com.cnu.devlog_springboot.model.request.ProjectRequest;
-import com.com.cnu.devlog_springboot.service.ProjectService;
-import java.util.List;
+import com.com.cnu.devlog_springboot.model.Post;
+import com.com.cnu.devlog_springboot.model.request.PostRequest;
+import com.com.cnu.devlog_springboot.service.PostService;
+import com.com.cnu.devlog_springboot.type.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.lang.Nullable;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
-@RequestMapping("/projects")
+@RequestMapping("/posts")
 @RequiredArgsConstructor
-public class ProjectController {
+public class PostController {
+    private final PostService postService;
 
-    private final ProjectService projectService;
-
+    // GET /posts
     @GetMapping
-    public ResponseEntity<List<Project>> getProjects() {
-        return ResponseEntity.ok(projectService.getProjects());
+    public ResponseEntity<List<Post>> getPosts(@RequestParam @Nullable Tag tag) {
+        return ResponseEntity.ok(postService.getPosts(tag));
     }
 
-    @GetMapping("/{projectId}")
-    public ResponseEntity<Project> getProject(@PathVariable Integer projectId) {
-        return ResponseEntity.ok(projectService.getProject(projectId));
+    // GET /posts/{postId}
+    @GetMapping("{postId}")
+    public ResponseEntity<Post> getPost(@PathVariable("postId")Integer postId) {
+        return ResponseEntity.ok(postService.getPost(postId));
     }
 
+    // POST /posts
     @PostMapping
-    public ResponseEntity<Project> createProject(@RequestBody ProjectRequest projectRequest) {
-        return ResponseEntity.ok(projectService.createProject(projectRequest));
+    public ResponseEntity<Post> createPost(@RequestBody PostRequest postRequest) {
+        return ResponseEntity.ok(postService.creatPost(postRequest));
     }
 
-    @PutMapping("{projectId}")
-    public ResponseEntity<Project> updateProject(
-            @PathVariable("projectId")Integer projectId,
-            @RequestBody ProjectRequest projectRequest
+    // PUT /posts/{postId}
+    // ex. localhost:8080/posts/3
+    @PutMapping("{postId}")
+    public ResponseEntity<Post> updatePost(
+            @PathVariable("postId")Integer postId,
+            @RequestBody PostRequest postRequest
     ) {
-        return ResponseEntity.ok(projectService.updateProject(projectId, projectRequest));
+        return ResponseEntity.ok(postService.updatePost(postId, postRequest));
     }
 
-    @DeleteMapping("/{projectId}")
-    public ResponseEntity<Void> deleteProject(@PathVariable("projectId") Integer projectId) {
-        projectService.deleteProject(projectId);
+    // DELETE /posts/{postId}
+    @DeleteMapping("{postId}")
+    public ResponseEntity<Void> deletePost(@PathVariable("postId") Integer postId) {
+        postService.deletePost(postId);
         return ResponseEntity.noContent().build();
     }
 }
