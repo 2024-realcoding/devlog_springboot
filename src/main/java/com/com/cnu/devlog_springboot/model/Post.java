@@ -1,6 +1,6 @@
 package com.com.cnu.devlog_springboot.model;
 
-import com.com.cnu.devlog_springboot.type.Tag;
+import com.com.cnu.devlog_springboot.type.ErrorCode;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -16,5 +16,5 @@ public class Post {
     String title;
     String contents;
     @Enumerated(value = EnumType.STRING)
-    Tag tag;
+    ErrorCode tag;
 }
