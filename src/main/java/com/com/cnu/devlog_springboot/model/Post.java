@@ -14,7 +14,7 @@ public class Post {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
     String title;
-    String content;
+    String contents;
     @Enumerated(value = EnumType.STRING)
     Tag tag;
 }
