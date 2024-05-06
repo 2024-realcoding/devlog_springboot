@@ -44,7 +44,7 @@ public class ProjectService {
                     project.setStartDate(projectRequest.startDate());
                     project.setEndDate(projectRequest.endDate());
                     return projectRepository.save(project);
-                }).orElse(null);
+                }).orElseThrow(() -> new DevlogException(ErrorCode.PROJECT_NOT_FOUND));
     }
 
     public void deleteProject(Integer projectId) {

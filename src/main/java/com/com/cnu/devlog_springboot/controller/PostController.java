@@ -24,12 +24,7 @@ public class PostController {
     // GET /posts/{postId}
     @GetMapping("{postId}")
     public ResponseEntity<Post> getPost(@PathVariable("postId")Integer postId) {
-        Post post = postService.getPost(postId);
-        if (post != null) {
-            return ResponseEntity.ok(postService.getPost(postId));
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+        return ResponseEntity.ok(postService.getPost(postId));
     }
 
     // POST /posts
@@ -45,23 +40,13 @@ public class PostController {
             @PathVariable("postId")Integer postId,
             @RequestBody PostRequest postRequest
     ) {
-        Post post = postService.getPost(postId);
-        if (post != null) {
-            return ResponseEntity.ok(postService.updatePost(postId, postRequest));
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+        return ResponseEntity.ok(postService.updatePost(postId, postRequest));
     }
 
     // DELETE /posts/{postId}
     @DeleteMapping("{postId}")
     public ResponseEntity<Void> deletePost(@PathVariable("postId") Integer postId) {
-        Post post = postService.getPost(postId);
-        if (post != null) {
-            postService.deletePost(postId);
-            return ResponseEntity.noContent().build();
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+        postService.deletePost(postId);
+        return ResponseEntity.noContent().build();
     }
 }
