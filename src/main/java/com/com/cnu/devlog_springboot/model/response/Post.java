@@ -1,4 +1,4 @@
-package com.com.cnu.devlog_springboot.model;
+package com.com.cnu.devlog_springboot.model.response;
 
 import com.com.cnu.devlog_springboot.type.Tag;
 import jakarta.persistence.*;

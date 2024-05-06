@@ -1,6 +1,6 @@
 package com.com.cnu.devlog_springboot.controller;
 
-import com.com.cnu.devlog_springboot.model.Post;
+import com.com.cnu.devlog_springboot.model.response.Post;
 import com.com.cnu.devlog_springboot.model.request.PostRequest;
 import com.com.cnu.devlog_springboot.service.PostService;
 import lombok.RequiredArgsConstructor;
