@@ -1,0 +1,76 @@
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+# This workflow will build a Java project with Gradle and cache/restore any dependencies to improve the workflow execution time
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-java-with-gradle
+
+name: Deployment
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ "main" ]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+    - name: Set up JDK 21
+      uses: actions/setup-java@v3
+      with:
+        java-version: '21'
+        distribution: 'temurin'
+    - name: Build with Gradle
+      uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
+      with:
+        arguments: build
+    - uses: actions/upload-artifact@v3
+      with:
+        name: jar
+        path: build/libs
+        
+  send-jar:
+    needs: build
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Download jar
+        uses: actions/download-artifact@v3
+        with:
+          name: jar
+      - name: Send jar to remote server
+        uses: appleboy/scp-action@master
+        with:
+          host: 34.64.188.42
+          username: kongju8466
+          source: "devlog_springboot-0.0.1-SNAPSHOT.jar"
+          target: "/home/kongju8466"
+          key: ${{ secrets.PRIVATE_KEY }}
+  
+  run-app:
+    needs: send-jar
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Move deploy.sh
+        uses: appleboy/scp-action@master
+        with:
+          host: 34.64.188.42
+          username: kongju8466
+          source: "deploy.sh"
+          target: "/home/kongju8466"
+          key: ${{ secrets.PRIVATE_KEY }}
+      - name: Execute script
+        uses: appleboy/ssh-action@master
+        with:
+          username: kongju8466
+          host: 34.64.188.42
+          key: ${{ secrets.PRIVATE_KEY }}
+          script_stop: true
+          script: cd /home/kongju8466 && chmod +x deploy.sh && ./deploy.sh
