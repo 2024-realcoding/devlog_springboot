@@ -8,6 +8,13 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+
+
+import com.com.cnu.devlog_springboot.exception.DevlogException;
+import com.com.cnu.devlog_springboot.type.ErrorCode;
+import com.com.cnu.devlog_springboot.type.Tag;
+import jakarta.annotation.Nullable;
+
 @Service
 @RequiredArgsConstructor
 public class PostService {
@@ -33,16 +40,27 @@ public class PostService {
                     post.setContents(postRequest.contents());
                     return postRepository.save(post);
                 })
-                .orElse(null);
+                .orElseThrow(() -> new DevlogException(ErrorCode.POST_NOT_FOUND));
     }
 
     public Post getPost(Integer postId) {
-        return postRepository.findById(postId)
-                .orElse(null);
+        return postRepository.findById(postId).orElseThrow(() -> new DevlogException(ErrorCode.POST_NOT_FOUND));
     }
 
     public void deletePost(Integer postId) {
         postRepository.findById(postId)
                 .ifPresent(postRepository::delete);
     }
+
+
+
+    public List<Post> getPostbyTag(@Nullable Tag tag) {
+        if (tag != null){
+            return postRepository.findAllByTag(tag);
+        }
+        return postRepository.findAll();
+    }
+
+
+    
 }
