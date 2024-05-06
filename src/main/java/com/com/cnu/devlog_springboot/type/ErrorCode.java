@@ -3,7 +3,7 @@ package com.com.cnu.devlog_springboot.type;
 import lombok.Getter;
 import org.hibernate.annotations.NotFound;
 import org.springframework.http.HttpStatus;
-@Getter
+@Getter 
 public enum ErrorCode {
 
     POST_NOT_FOUND(HttpStatus.NOT_FOUND, 4000, "해당 게시글을 찾을 수 없습니다"),
