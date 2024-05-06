@@ -3,6 +3,7 @@ package com.com.cnu.devlog_springboot.service;
 import com.com.cnu.devlog_springboot.model.Post;
 import com.com.cnu.devlog_springboot.model.request.PostRequest;
 import com.com.cnu.devlog_springboot.repository.PostRepository;
+import com.com.cnu.devlog_springboot.type.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -13,7 +14,10 @@ import java.util.List;
 public class PostService {
     private final PostRepository postRepository;
 
-    public List<Post> getPosts() {
+    public List<Post> getPosts(Tag tag) {
+        if (tag != null) {
+            return postRepository.findAllByTag(tag);
+        }
         return postRepository.findAll();
     }
 
