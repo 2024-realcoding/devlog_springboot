@@ -1,7 +1,9 @@
-package com.com.cnu.devlog_springboot.repository;
+package com.com.cnu.devlog_springboot.model.response;
 
-import com.com.cnu.devlog_springboot.model.Project;
-import org.springframework.data.jpa.repository.JpaRepository;
-
-public interface ProjectRepository extends JpaRepository<Project, Integer> {
+public record ErrorResponse(
+        String title,
+        Integer status,
+        Integer code,
+        String instance
+) {
 }
