@@ -6,6 +6,8 @@ import com.com.cnu.devlog_springboot.repository.ProjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ProjectService {
 
@@ -17,17 +19,18 @@ public class ProjectService {
     }
 
     public void saveProjectFromRequest(ProjectRequest projectRequest) {
-        // ProjectRequest로부터 정보 추출
         String title = projectRequest.title();
         String summary = projectRequest.summary();
         String contents = projectRequest.contents();
         LocalDate startDate = projectRequest.startDate();
         LocalDate endDate = projectRequest.endDate();
 
-        // Project 객체 생성
         Project project = new Project(null, title, summary, contents, startDate, endDate);
 
-        // 저장
         projectRepository.save(project);
+    }
+
+    public List<Project> getAllProjects() {
+        return projectRepository.findAll();
     }
 }
