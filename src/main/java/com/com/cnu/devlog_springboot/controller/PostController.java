@@ -6,6 +6,8 @@ import com.com.cnu.devlog_springboot.service.PostService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import com.com.cnu.devlog_springboot.type.Tag;
+import io.micrometer.common.lang.Nullable;
 
 import java.util.List;
 
@@ -17,8 +19,8 @@ public class PostController {
 
     // GET /posts
     @GetMapping
-    public ResponseEntity<List<Post>> getPosts() {
-        return ResponseEntity.ok(postService.getPosts());
+    public ResponseEntity<List<Post>> getPosts(@RequestParam @Nullable Tag tag) {
+        return ResponseEntity.ok(postService.getPosts(tag));
     }
 
     // GET /posts/{postId}
