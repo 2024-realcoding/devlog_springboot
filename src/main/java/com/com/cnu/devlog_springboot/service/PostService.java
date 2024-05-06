@@ -21,6 +21,7 @@ public class PostService {
         if(tag != null) {
             return postRepository.findAllByTag(tag);
         }
+        return postRepository.findAll();
     }
 
     public Post creatPost(PostRequest postRequest) {
