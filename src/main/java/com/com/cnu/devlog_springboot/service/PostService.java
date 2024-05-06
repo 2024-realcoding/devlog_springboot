@@ -1,8 +1,12 @@
 package com.com.cnu.devlog_springboot.service;
 
+import com.com.cnu.devlog_springboot.exception.DevlogException;
 import com.com.cnu.devlog_springboot.model.Post;
 import com.com.cnu.devlog_springboot.model.request.PostRequest;
 import com.com.cnu.devlog_springboot.repository.PostRepository;
+import com.com.cnu.devlog_springboot.type.ErrorCode;
+import com.com.cnu.devlog_springboot.type.Tag;
+import io.micrometer.common.lang.Nullable;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -13,8 +17,10 @@ import java.util.List;
 public class PostService {
     private final PostRepository postRepository;
 
-    public List<Post> getPosts() {
-        return postRepository.findAll();
+    public List<Post> getPosts(@Nullable Tag tag) {
+        if(tag != null) {
+            return postRepository.findAllByTag(tag);
+        }
     }
 
     public Post creatPost(PostRequest postRequest) {
@@ -33,12 +39,12 @@ public class PostService {
                     post.setContents(postRequest.contents());
                     return postRepository.save(post);
                 })
-                .orElse(null);
+                .orElseThrow(() -> new DevlogException(ErrorCode.POST_NOT_FOUND));
     }
 
     public Post getPost(Integer postId) {
         return postRepository.findById(postId)
-                .orElse(null);
+                .orElseThrow(() -> new DevlogException(ErrorCode.POST_NOT_FOUND));
     }
 
     public void deletePost(Integer postId) {
