@@ -44,4 +44,29 @@ public class ProjectService {
         }
         return projectOptional.get();
     }
+
+    public void updateProject(Integer id, ProjectRequest projectRequest) {
+        Optional<Project> projectOptional = projectRepository.findById(id);
+        if (projectOptional.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Project not found");
+        }
+
+        Project project = projectOptional.get();
+        project.setTitle(projectRequest.title());
+        project.setSummary(projectRequest.summary());
+        project.setContents(projectRequest.contents());
+        project.setStartDate(projectRequest.startDate());
+        project.setEndDate(projectRequest.endDate());
+
+        projectRepository.save(project);
+    }
+
+    public void deleteProject(Integer id) {
+        Optional<Project> projectOptional = projectRepository.findById(id);
+        if (projectOptional.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Project not found");
+        }
+
+        projectRepository.deleteById(id);
+    }
 }
