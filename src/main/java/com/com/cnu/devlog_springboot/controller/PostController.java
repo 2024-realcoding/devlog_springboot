@@ -6,6 +6,8 @@ import com.com.cnu.devlog_springboot.service.PostService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import com.com.cnu.devlog_springboot.type.Tag;
+import org.springframework.lang.Nullable;
 
 import java.util.List;
 
@@ -15,23 +17,26 @@ import java.util.List;
 public class PostController {
     private final PostService postService;
 
-    // GET /posts
-    @GetMapping
-    public ResponseEntity<List<Post>> getPosts() {
-        return ResponseEntity.ok(postService.getPosts());
-    }
-
     // GET /posts/{postId}
     @GetMapping("{postId}")
     public ResponseEntity<Post> getPost(@PathVariable("postId")Integer postId) {
         return ResponseEntity.ok(postService.getPost(postId));
     }
 
+
+    // GET /posts/tag
+    @GetMapping
+    public ResponseEntity<List<Post>> getPosts(@RequestParam @Nullable Tag tag) {
+        return ResponseEntity.ok(postService.getPosts(tag));
+    }
+
+
     // POST /posts
     @PostMapping
     public ResponseEntity<Post> createPost(@RequestBody PostRequest postRequest) {
-        return ResponseEntity.ok(postService.creatPost(postRequest));
+        return ResponseEntity.ok(postService.createPost(postRequest));
     }
+
 
     // PUT /posts/{postId}
     // ex. localhost:8080/posts/3
@@ -43,6 +48,7 @@ public class PostController {
         return ResponseEntity.ok(postService.updatePost(postId, postRequest));
     }
 
+
     // DELETE /posts/{postId}
     @DeleteMapping("{postId}")
     public ResponseEntity<Void> deletePost(@PathVariable("postId") Integer postId) {
@@ -50,3 +56,4 @@ public class PostController {
         return ResponseEntity.noContent().build();
     }
 }
+
