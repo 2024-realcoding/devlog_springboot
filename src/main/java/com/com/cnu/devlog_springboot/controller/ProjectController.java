@@ -28,7 +28,7 @@ public class ProjectController {
         return ResponseEntity.ok(project);
     }
 
-    @PutMapping("{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<Project> updateProject(
             @PathVariable("id") Long id,
             @RequestBody ProjectRequest request
@@ -37,7 +37,7 @@ public class ProjectController {
         return ResponseEntity.ok(project);
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteProject(
             @PathVariable("id") Long id
     ) {
