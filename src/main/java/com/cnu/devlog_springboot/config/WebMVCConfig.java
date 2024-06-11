@@ -1,4 +1,4 @@
-package com.com.cnu.devlog_springboot.config;
+package com.cnu.devlog_springboot.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;

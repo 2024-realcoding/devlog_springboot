@@ -1,6 +1,6 @@
-package com.com.cnu.devlog_springboot.model;
+package com.cnu.devlog_springboot.model;
 
-import com.com.cnu.devlog_springboot.type.Tag;
+import com.cnu.devlog_springboot.type.Tag;
 import jakarta.persistence.*;
 import lombok.*;
 

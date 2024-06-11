@@ -1,4 +1,4 @@
-package com.com.cnu.devlog_springboot.model.request;
+package com.cnu.devlog_springboot.model.request;
 
 import java.time.LocalDate;
 
