@@ -1,8 +1,8 @@
-package com.com.cnu.devlog_springboot.controller;
+package com.cnu.devlog_springboot.controller;
 
-import com.com.cnu.devlog_springboot.model.Post;
-import com.com.cnu.devlog_springboot.model.request.PostRequest;
-import com.com.cnu.devlog_springboot.service.PostService;
+import com.cnu.devlog_springboot.model.Post;
+import com.cnu.devlog_springboot.service.PostService;
+import com.cnu.devlog_springboot.model.request.PostRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

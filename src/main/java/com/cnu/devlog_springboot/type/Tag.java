@@ -1,4 +1,4 @@
-package com.com.cnu.devlog_springboot.type;
+package com.cnu.devlog_springboot.type;
 
 public enum Tag {
     SPRINGBOOT,

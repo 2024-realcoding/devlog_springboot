@@ -1,6 +1,6 @@
-package com.com.cnu.devlog_springboot.repository;
+package com.cnu.devlog_springboot.repository;
 
-import com.com.cnu.devlog_springboot.model.Post;
+import com.cnu.devlog_springboot.model.Post;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

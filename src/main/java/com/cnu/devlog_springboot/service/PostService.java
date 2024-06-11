@@ -1,8 +1,10 @@
-package com.com.cnu.devlog_springboot.service;
+package com.cnu.devlog_springboot.service;
 
-import com.com.cnu.devlog_springboot.model.Post;
-import com.com.cnu.devlog_springboot.model.request.PostRequest;
-import com.com.cnu.devlog_springboot.repository.PostRepository;
+import com.cnu.devlog_springboot.exception.DevlogException;
+import com.cnu.devlog_springboot.model.Post;
+import com.cnu.devlog_springboot.type.ErrorCode;
+import com.cnu.devlog_springboot.model.request.PostRequest;
+import com.cnu.devlog_springboot.repository.PostRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -33,16 +35,17 @@ public class PostService {
                     post.setContents(postRequest.contents());
                     return postRepository.save(post);
                 })
-                .orElse(null);
+                .orElseThrow(() -> new DevlogException(ErrorCode.POST_NOT_FOUND));
     }
 
     public Post getPost(Integer postId) {
         return postRepository.findById(postId)
-                .orElse(null);
+                .orElseThrow(() -> new DevlogException(ErrorCode.POST_NOT_FOUND));
     }
 
     public void deletePost(Integer postId) {
-        postRepository.findById(postId)
-                .ifPresent(postRepository::delete);
+        Post post = postRepository.findById(postId)
+                .orElseThrow(() -> new DevlogException(ErrorCode.POST_NOT_FOUND));
+        postRepository.delete(post);
     }
 }

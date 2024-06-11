@@ -1,4 +1,4 @@
-package com.com.cnu.devlog_springboot;
+package com.cnu.devlog_springboot;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
